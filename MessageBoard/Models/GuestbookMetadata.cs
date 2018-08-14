@@ -13,7 +13,7 @@ namespace MessageBoard.Models
          private class GuestbookMetadata
         {
             [DisplayName("編號:")]
-            public int id { get; set; }
+            public int Id { get; set; }
 
             [DisplayName("名字:")]
             [Required(ErrorMessage = "請輸入名字")]
@@ -31,7 +31,10 @@ namespace MessageBoard.Models
 
             [DisplayName("新增時間:")]
             public DateTime CreateTime { get; set; }
-            
+
+            [DisplayName("編輯時間:")]
+            public DateTime LastUpdated { get; set;}
+
             [DisplayName("回覆時間:")]
             public DateTime ReplyTime { get; set;}
 

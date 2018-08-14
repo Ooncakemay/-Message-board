@@ -14,11 +14,12 @@ namespace MessageBoard.Models
     
     public partial class Guestbooks
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Content { get; set; }
         public System.DateTime CreateTime { get; set; }
         public string Reply { get; set; }
-        public string ReplyTime { get; set; }
+        public Nullable<System.DateTime> ReplyTime { get; set; }
+        public Nullable<System.DateTime> LastUpdated { get; set; }
     }
 }
