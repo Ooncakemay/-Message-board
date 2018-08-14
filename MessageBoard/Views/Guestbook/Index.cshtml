@@ -1,53 +1,56 @@
 ﻿@model MessageBoard.ViewModel.GuestbookView
 
 @{
+    Layout = null;
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
 <div>
-    <table>
-        @if (!Model.DataList.Count.Equals(0))
-        {
-            foreach (var item in Model.DataList)
+    @Html.Action("Create")
+</div>
+<h2>留言板內容</h2>
+
+
+    <div>
+        <table border="1" style="font-size:18px;font-family:serif;" cellpadding="5">
+            @if (!Model.DataList.Count.Equals(0))
+            {
+                foreach (var item in Model.DataList)
+                {
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.DataList[0].Name)</td>
+                        <td>@item.Name</td>
+                        <td>@Html.DisplayNameFor(model => model.DataList[0].CreateTime)</td>
+                        <td>@item.CreateTime</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.DataList[0].Content)</td>
+                        <td colspan="3">@item.Content</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.DataList[0].Reply)</td>
+                        <td>@item.Reply</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.DataList[0].ReplyTime)</td>
+                        <td>@item.ReplyTime</td>
+                    </tr>
+                }
+            }
+            else
             {
                 <tr>
-                    <td>@Html.DisplayNameFor(model => model.DataList[0].Name)</td>
-                    <td>@item.Name</td>
-                    <td>@Html.DisplayNameFor(model => model.DataList[0].CreateTime)</td>
-                    <td>@item.CreateTime</td>
+                    <td colspan="4">資料庫內無資料</td>
                 </tr>
-                <tr>
-                    <td>@Html.DisplayNameFor(model => model.DataList[0].Content)</td>
-                    <td colspan="3">@item.Content</td>
-                </tr>
-                <tr>
-                    <td>@Html.DisplayNameFor(model => model.DataList[0].Reply)</td>
-                    <td>@item.Reply</td>
-                </tr>
-                <tr>
-                    <td>@Html.DisplayNameFor(model => model.DataList[0].ReplyTime)</td>
-                    <td>@item.ReplyTime</td>
-                </tr>
+
             }
-        }
-        else
-        {
-            <tr>
-                <td colspan="4">資料庫內無資料</td>
-            </tr>
 
-        }
+        </table>
 
-    </table>
+    </div>
 
-</div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    }
+    

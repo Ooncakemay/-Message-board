@@ -8,9 +8,14 @@ namespace MessageBoard.Services
 {
     public class GuestbooksDBService
     {
-        demoEntities db = new demoEntities();
-        public List<Guestbooks> getDataList() {
+        MyGuestbookEntities db = new MyGuestbookEntities();
+        public List<Guestbooks> GetDataList() {
             return db.Guestbooks.ToList();
+        }
+        public void InsertGuestbooks(Guestbooks newData) {
+            newData.CreateTime = DateTime.Now;
+            db.Guestbooks.Add(newData);
+            db.SaveChanges();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MessageBoard.Services;
+﻿using MessageBoard.Models;
+using MessageBoard.Services;
 using MessageBoard.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,17 @@ namespace MessageBoard.Controllers
         public ActionResult Index()
         {
             GuestbookView data = new GuestbookView();
-            data.DataList = guestbookDBService.getDataList();
-            
+            data.DataList = guestbookDBService.GetDataList();
+
             return View(data);
+        }
+        public ActionResult Create() {
+            return PartialView();
+        }
+        [HttpPost] // ??/  Bind(Include)
+        public ActionResult Add([Bind(Include ="Name,Content")] Guestbooks data) {
+            guestbookDBService.InsertGuestbooks(data);
+            return RedirectToAction("Index");
         }
     }
 }

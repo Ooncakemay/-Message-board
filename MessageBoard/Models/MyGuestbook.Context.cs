@@ -13,10 +13,10 @@ namespace MessageBoard.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class demoEntities : DbContext
+    public partial class MyGuestbookEntities : DbContext
     {
-        public demoEntities()
-            : base("name=demoEntities")
+        public MyGuestbookEntities()
+            : base("name=MyGuestbookEntities")
         {
         }
     
